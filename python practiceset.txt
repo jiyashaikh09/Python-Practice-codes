@@ -1,0 +1,1968 @@
+import random
+import string
+import os
+print("Generate random color hex:")
+print("#{:06x}".format(random.randint(0,0xFFFFFF)))
+
+print("\nGenerate a random string:")
+max_length=225
+s=""
+for i in range(random.randint(1,max_length)):
+    s +=random.choice(string.ascii_letters)
+print(s)
+
+print("Generate a random number between two integer , inclusive:")
+print(random.randint(0,10))
+print(random.randint(-7,7))
+
+print("Generate a ranodm multiple of 7:")
+print(random.randint(1,100)*7)
+
+l=[1,59,126,74,28,183,74]
+print(random.choice(l))
+
+d=(1,2,3,4,57,76)
+print(random.choice(d))
+
+set=([1,2,453,6456,45])
+print(random.choice(set))
+
+print('random alphabetical string:')
+max_length=20
+s=""
+for i in range(random.randint(0,max_length)):
+    s +=random.choice(string.ascii_letters)
+print(s)
+
+print("a single random alphabetical character:")
+print(random.choice(string.ascii_letters))
+
+print("alphabetical string of fixed length:")
+s=""
+for i in range(10):
+    s +=random.choice(string.ascii_letters)
+print(s)
+
+print("seeded random number :")-----------seeded random number is it must contain a starting point
+print(random.random())
+print(random.Random(0).random())
+
+print("Generate a float between 0 and 1 excluding1:")
+print(random.random())
+# random.random() produces A float value
+
+#RANDRANGE
+print(" a random integer between 0 and 6 excluding 6:")
+print(random.randrange(0,6))
+
+print("between 5 to 10 excluding10 :")
+print(random.randrange(5,10))
+
+print("ranodm between 0 to 10")
+print(random.randrange(0,11))
+
+print("with a step of 3 and rnaodm date betweeen two dates:")
+print(random.randrange(12,30,3))
+
+#RANDOM SHUFFLE
+list1=[1,2,3,4,5,6,7,8,9,10]
+random.shuffle(list1)
+print(list1)
+
+word=['jiya','shaikh','shakur','riya','piya','miya']
+random.shuffle(word)
+print(word)
+
+#RANDOM.UNFORM()
+#1TYPE
+print("random float between 0 to 1")
+print(random.random())
+#2TYPE
+print("random float between 0 to 1")
+print(random.uniform(0,1.01))
+
+print("random float between specific range")
+print(random.uniform(1,5))
+
+#random.sample(population,k,count
+
+print("create a list of random integers")
+population=range(0,100)
+num_list=random.sample(population,10)
+print(num_list)
+
+no_elements=4
+print(" randomly select",no_elements," multiple items from the said list:")
+result_elements=random.sample(num_list,no_elements)
+print(result_elements)
+
+
+no_elements=8
+print("\nrandomly select",no_elements,"multiple items from said list:")
+result_elements =random.sample(num_list, no_elements)
+print(result_elements)
+
+#1
+print("a set of random seed and get a random number from 0 to 1")
+max_length=1
+s=""
+for i in range(0,max_length):
+    s = random.random()
+print(s)
+
+---------------MODULE -TYPES------------------
+import types
+def func():
+    return 1
+print(isinstance(func, types.FunctionType))
+print(isinstance(func, types.LambdaType))
+print(isinstance(lambda x: x,types.FunctionType))
+print(isinstance(lambda x: x ,types.LambdaType))
+print(isinstance(max, types.FunctionType))
+print(isinstance(max, types.LambdaType))
+print(isinstance(abs, types.LambdaType))
+print(isinstance(abs, types.FunctionType))
+------------function and methods----------------
+print("find the max of three numbers")
+
+def max_of_two(x,y):
+    if x>y:
+        return x
+    return y
+def max_of_three(x,y,z):
+    return max_of_two(max_of_two(x,y),z)
+print(max_of_three(90,100,35))
+
+print("sum all the numbers in the list")
+def sum(numbers):
+    total=0
+    for i  in numbers:
+        total += i
+    return total
+print(sum((37,8387,1)))
+
+def mult(numbers):
+    total=1
+    for i in numbers:
+        total *= i
+    return total
+print(mult((11000,1)))
+
+print("reverse string")
+def string_reverse(str):
+    rstr=''
+    index= len(str)
+    while index>0:
+        rstr += str[index-1]
+        index = index-1
+    return rstr
+print(string_reverse('1727465'))
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+n=int(input("ENTER THE NUMER TO CALCULATE THE FACTORIAL:-"))
+print(factorial(n))
+
+
+# armstrong (if the sum of  nth power of each digit equals to no itself)
+number = int(input('Enter any positive number : '))
+def check_armstrong(num):
+    if num in range(1,10):
+        return True
+    order = len(str(num))
+    sum = 0
+    original = num
+    while num>0:
+        digit = num % 10                       		 # finding last digit
+        sum += digit ** order               		#** is use to find power
+        num = num // 10                       		# last digit second last digit and upto no no is left
+    if sum == original:
+        return True
+    return False
+if check_armstrong(number):
+    print('number is armsrong')
+else:
+    print('number is not armsrong')
+
+
+r=int(input("enter radius of  circle"))
+def circle(r):
+    pi=3.14
+    area= pi*r*r
+    return area
+print(circle(r))
+
+
+#prime nos in given interval  
+#prime no is divisible by itself and only 1
+a=int(input("enter starting point:"))
+b=int(input("enter end point:-"))
+i=0
+for i in range (a,b):
+    if i>0:
+        for j in range(2,i):
+            if (i%j==0):  #if i is divisible by j then it is prime no i.e remainder is 0
+                break
+        else:print(i)
+
+
+a=int(input("enter no to check prime or not:-"))
+if a>1:
+    for i in range(2,int(a/2)):
+        if (a%i)==0:
+            print(a ," is not a prime number")
+            break
+    else :
+        print(a ," is prime number")
+
+else: print(a , "is not  a pirme no")
+
+
+def fibonacci(n):
+    if n<=0:
+        print("incorrect input")
+    elif n==1:
+        return 0
+    elif n==2:
+        return 1
+    else:
+        return fibonacci(n-1)+fibonacci(n-2)
+print(fibonacci(10))
+
+
+#python program to find position of nth multiple of a number k in fibonacci series
+def findposition(k,n):
+    f1=0
+    f2=1
+    i=2
+    while i!=0:
+        f3=f1+f2;
+        f1=f2;
+        f2=f3;
+        if f2%k==0:
+            return n*i
+        i+=1
+    return
+/n=5;
+k=4;
+print("position of nthmultiple of k in"
+      " fibonacci series is ",findposition(k,n))
+
+
+# convert alphabet/character in ascii
+a=input("enter a charcter:-")
+print("The ascii letter of ", a , "is", ord(a))
+
+
+num=int(input("Enter a number to sum the square:-"))
+def sum_of_square(num):
+    sum=0
+    for i in range (0,num+1):
+        sum += (i*i)
+    return sum
+print(sum_of_square(num))
+
+
+num=int(input("Enter a no to sum the cube:-"))
+def sum_of_cube(num):
+    sum=0
+    for i in range(1,num+1):
+        sum +=(i*i*i)
+    return sum
+print(sum_of_cube(num))
+
+---------Array codes---------------
+#sum of array
+def sum(arr):
+    sum=0
+    for i in arr:
+       sum+=i
+    return sum
+arr=[]
+arr=[14,2,38,2,3]
+n=len(arr)
+print(sum(arr))
+
+
+#largest no
+arr=[1,2,3,4,5,6,7,89,0]
+print("The largest no in array is", max(arr))
+
+
+#rotation of arr
+#function to rotate array by d elements using temp array
+def rotate_array(arr, n, d):
+    temp=[]
+    i=0
+    while(i<d):
+        temp.append(arr[i])
+        i=i+1
+    i=0
+    while(d<n):
+        arr[i]=arr[d]
+        i= i+1
+        d= d+1
+    arr[:]=arr[:i]+temp
+    return arrarray=[1,2,3,4,5,6,7,8]
+shift =2
+def print(array):
+    for i in range(0,len(array)):
+        print(array[i],end='')
+def leftrotation(array, shift):
+    for j in range (0, shift):
+        temp=array[0]
+        for j in range (0,len(array)-1):
+            array[j]=array[j+1]
+        array[len(array)-1]=temp
+    return array
+
+print("array before roattion:-")
+print(array)
+arr=[1,2,3,4,5,6,7,8]
+print("Array after left rotation is", end='')
+print(rotate_array(arr,len(arr),2))
+
+
+
+#using slicing approach to rotate arr               
+def rotatarr(arr,n , position):                     
+    arr[:]=arr[position:n]+arr[0:position]                 
+    return arr                                      
+arr=[1,2,3,4,5,6]                                   
+n=len(arr)                                          
+position=3                                          
+print(arr)                                          
+print("rotated list is", rotatarr(arr,n , position))
+
+
+#split the array and add the first part to the end
+
+def splitarray(arr, n ,position):
+
+    for i in range (0,position):
+        x=arr[0]
+        for j in range (0,n-1):
+            arr[j]=arr[j+1]
+        arr[n - 1] = x
+
+arr=[12,33,45,6,43,4]
+n = len(arr)
+position= 2
+splitarray(arr, n , position)
+for i in range (0,n):
+    print(arr[i], end=' ')
+
+#optimised solution
+def splitArr(arr,n,position):
+    return arr[position::]+arr[:position]
+arr = [1,2,3,4,5,6,7]'
+n = len(arr)
+position = 2
+arr = splitArr(arr,n,position)
+for i in range(0,n):
+    print(arr[i],end=' ')
+
+
+#reverse an array                             
+a=[3,2,1,4,5,6]                               
+i=0                                           
+j=len(a)-1                                    
+while(i<j):                                   
+    t=a[i]                                    
+    a[i]=a[j]                                 
+    a[j]=t                                    
+    i=i+1                                     
+    j=j-1                                     
+print("reversed array is:")                   
+for i in range (len(a)):                      
+    print(a[i])                               
+
+
+
+#cyclic rotate array one by one
+def rotatearr(arr,n):
+    i=0
+    j=n-1
+    while i != j:
+        arr[i], arr[j] = arr[j], arr[i]
+        i = i+1
+    pass
+arr=[1,2,3,4,5]
+n=len(arr)
+print("Given array is: ")
+for i in range(0,n):
+    print(arr[i],end=' ')
+rotatearr(arr,n)
+print("\n Rotated array is:-")
+for i in range (0,n):
+    print(arr[i], end=' ')
+
+#2method
+def rotatearr(arr):
+    arr[:]=arr[-1:]+arr[:-1]
+arr=[1,2,3,4,5,6]
+rotatearr(arr)
+print(*arr)
+
+
+#search an element in sorted array and rotated array using
+#single pass of binary search
+#returns index of key in arr[l..h]if key is present
+#otherwise returns 1
+
+#here we need to find a inedx of element which is asked to find ---> imp
+#l=low h is high and key is given element 
+
+
+def search(arr,l,h,key):
+    if l>h:
+        return -1
+    mid = (l+h) //2
+    if arr[mid]==key:
+        return mid
+                                                     #upto here it is normal binary search
+                                                       #if array [l..mid] is sorted
+    if arr[l] <= arr[mid]:
+                                                     #as this subarrayis sorted we can quickly
+                                                     #check if key lies in half or other half
+        if  key >=arr[l] and key <= arr[mid]:
+            return search(arr ,l, mid-1 , key)
+        return search(arr,mid+1, h,key)
+                                                       #if arr[l..mid] is not sorted , then arr[mid..r]
+                                                       #must be sorted
+    if key >= arr[mid] and key <= arr[h]:
+        return search(arr, mid+1, h,key)
+    return search(arr, l, mid-1 , key)
+                                                        #driver program
+arr=[4,5,6,7,8,9,1,2,3]
+key=6
+i=search(arr,0,len(arr)-1,key)
+if i != -1:
+    print("Index : %d" % i)
+else:
+    print("key not found")
+
+
+
+
+#find if the array has a pair with given sum 'x'.
+# It may be assumed that all elements in the array are distinct
+def pairInSortedRotate(arr, n, x):
+    #find the pivot element
+    for i in range(0,n-1):
+        if (arr[i]>arr[i+1]):
+            break;
+#this is linear search
+    # l is now index of smallest element
+    l=(i+1)%n
+    #r is now index of largest element
+    r=i
+    while(l!= r):                     #if current pair with sum x , we return true
+        if (arr[l]+arr[r]==x):
+            return True;
+                                            #if current pair sum is less,
+                                         #move to higher sum
+        if (arr[l]+arr[r]<x):
+            l=(l+1)%n;
+        else:
+                                                     #move to lower sum side
+            r=(n+r-1)%n;
+    return False;
+
+arr=[11,15,6,8,9,10]
+sum=16
+n=len(arr)
+if (pairInSortedRotate(arr,n , sum)):
+    print("array has two elemt of sum 16")
+else:
+    print("It doesn't have!")
+
+
+#leetcode
+#find the maximumvalue for sum (i*arr[i])with only rotattions on given array allowed
+#returns max possible value of sum (i*arr[i])
+
+def max_summation(arr):
+    arrsum=0                                                    #stores sum of arr[i](sum of all array elements)
+    currval=0                                                    #stores sum of i*arr[i]
+    n=len(arr)
+    for i in range(0,n):
+        arrsum =arrsum + arr[i]
+        currval= currval +(i*arr[i])
+    maxval=currval                                         #initializing result
+    for j in range(1,n):                                    #try all possible rotationsone by one and find the maximum
+        currval= currval + arrsum-n*arr[n-j]
+        if currval > maxval: 
+            maxval =currval
+    return maxval                                           # return result
+arr=[10,1,2,3,4,5,6,7,8,9]
+print("Max sum is: ", max_summation(arr))
+o/p:
+1,2,3,4,5 sum is 1*0+2*1+3*2+4*3+5*4=40
+2,3,4,5,1 sum is 2*0+3*1+4*2+5*3+1*4=30
+maxsum is 40
+
+
+
+#quickly find multiple left rotation of an array
+#given an array of size n and multiple values around which we need to left rotate the array
+Approach :-1)store array in temp
+	2) print temp array from temp (k%n) to (n+k%n)
+                        #fills temp with two copies of arr
+def preprocess(arr,n):
+    temp = [None] *(2*n)
+                        #store arr elements at i and i+n
+    for i in range(n):
+        temp[i] = temp[i+n] = arr[i]
+    return temp
+                        #function to left rotate an array k times
+def leftRotate(arr,n,k,temp):
+                        #starting position of array after k rotations in temp will be k % n
+    start=k%n
+                        #print array after k rotations
+    for i in range(start, start+n):
+        print(temp[i],end =" ")
+    print(" ")
+arr=[1,2,3,4,5]
+n=len(arr)
+temp=preprocess(arr,n)
+k=1
+leftRotate(arr,n,k,temp)
+k=2
+leftRotate(arr,n,k,temp)
+k=3
+leftRotate(arr,n,k,temp)
+o/p:
+2 3 4 5 1  
+3 4 5 1 2  
+4 5 1 2 3  
+
+
+time complexity:-O(logN)
+using binary search 
+def findmin(arr, low, high):
+    if low== high:
+        return arr[low]
+    if low>high:
+        return arr[0]
+    mid=(low+high)/2
+    if mid < high and mid+1 < mid :
+        return arr[mid+1]
+
+    if mid > low and mid-1 > mid:
+        return arr[mid]
+
+    if high > mid:
+        return findmin(arr,low,mid-1)
+    return findmin(arr,mid+1,high)
+
+arr1=[5,6,1,2,3,4]
+n=len(arr1)
+print(findmin(arr1,0,n-1))
+
+
+#findminimum value in sorted and rotated array
+time complexity:-O(N)
+def findmin(arr, low, high):
+    if low== high:
+        return arr[low]
+    if low>high:
+        return arr[0]
+    while(low<high):
+        mid= low + (high-low)//2
+        if (arr[mid] ==arr[high]):
+            high -= 1
+        elif (arr[mid]> arr[high]):
+            low = mid+1
+        else:
+             high = mid
+    return arr[high]
+arr1=[5,6,1,2,3,4]
+n=len(arr1)
+print(findmin(arr1,0,n-1))
+arr1=[1,2,3,4]
+n=len(arr1)
+print(findmin(arr1,0,n-1))
+arr1=[4,1,2,3]
+n=len(arr1)
+print(findmin(arr1,0,n-1))
+
+
+#right rotate
+def reversearr(arr, start,end):
+    while (start < end):
+        arr[start],arr[end]=arr[end],arr[start]
+        start = start+1
+        end = end -1
+def rightroate(arr,d,n):
+    reversearr(arr,0,n-1)
+    reversearr(arr,0,d-1)
+    reversearr(arr,d,n-1)
+#print array
+def prarray(arr,size):
+    for i in range(0,size):
+        print(arr[i],end=' ')
+arr=[1,2,3,4,5,6,7,8,9]
+position=2
+n=len(arr)
+print(rightroate(arr,position,n))
+prarray(arr,n)
+print(roatatarr(position,n,arr))
+
+
+#right rotate 
+#2nd approach
+def rightrotate(arr,num):
+	output_arr=[]
+	for item in range(len(length)-num, len(arr)):
+		output_arr.append(arr[items])
+	for item in range(0,len(arr)-num):
+		output_arr.append(arr[items])
+	return output_arr
+rotate_num=3
+arr1=[1,2,3,4,5,6]
+print(rightrotate(arr1,rotatenum)
+0/p
+4,5,6,1,2,3
+
+#3
+n=3
+arr=[1,2,3,4,5,6]
+if n>len(arr):
+	n=int(n%len(arr))
+arr=(arr[-n:]+arr[:-n])<-----------------------------imp
+print(arr)
+
+
+#check if number in string or not and print
+test_string='jiya shaikh 12647 jhadhfg'
+res=''.join(filter(lambda i: i.isdigit(),test_string))
+print(str)
+
+
+#Function to find the sum of contiguous subarray with maximum sum.
+#KADANE'S ALGO
+    def maxSubArraySum(self,arr,N):
+        ##Your code here
+        size=len(arr)
+        currsum=0
+        poi=0
+        en=0
+        st=0
+        max_so_far=0
+        for i in range(0,size):
+            currsum= currsum+arr[i]
+            
+            if (max_so_far < currsum):
+                max_so_far=currsum
+                st=poi
+                en=i
+            if (currsum<0):
+                poi=i+1
+                currsum=0
+    arr=[1,2,3,-2,5]
+    maxSubArraySum( arr)
+
+
+
+#logic:- 1 to 100
+#n*(n+1)/2 is sum of array suppose 100*(100+1)/2=5050
+#5000 is sum so difference is the missing number ie 50
+def MissingNumber(self,array,n):
+        # code here
+        expected_sum= int(n*(n+1)/2)
+        actual_sum= sum(array)
+        return expected_sum-actual_sum
+            
+
+
+def kthSmallest(self,arr, l, r, k):
+        '''
+        arr : given array
+        l : starting index of the array i.e 0
+        r : ending index of the array i.e size-1
+        k : find kth smallest element and return using this function
+        '''
+        arr.sort()
+        return arr[k-1]
+
+
+
+Given an array a[] of size N which contains elements from 0 to N-1,
+ you need to find all the elements occurring more than once in the given array
+           
+def duplicates(self, arr, n): 
+    	# code here
+    	duplicates=[]
+    	for i in arr:
+    	    if arr.count(i)>1:
+    	        if arr is not duplicate:
+        	        duplicate.append[i]
+
+
+Given an array A of N elements. Find the majority element in the array. 
+A majority element in an array A of size N is an element that appears more than N/2 times in the array.
+def majorityElement(self, A, N):
+        #Your code here
+        m={}
+        for i in range(N):
+            if A[i] in m :
+                m[A[i]] +=1
+            else:
+                m[A[i]] =1
+        count=0
+        for key in m:
+            if (m[key] > N/2):
+                count=1
+                return key
+                break
+        if(count==0):
+            return -1
+
+
+
+An element is called a peak element if its value is not smaller than the value of its adjacent elements
+(if they exists).
+Given an array arr[] of size N, find the index of any one of its peak elements.
+Note: The generated output will always be 1 if the index that you return is correct. 
+Otherwise output will be 0.
+def peakElement(self,arr, n):
+        # Code here
+        if (n==1):
+            return 0
+        if (arr[0]>=arr[1]):
+            return 0
+        if(arr[n-1]>=arr[n-2]):
+            return n-1
+        for i in range(0,n-1):
+            if (arr[i]>=arr[i-1] and arr[i]>=arr[i+1]):
+                return i
+
+# find transition point
+for i in range(0,n):
+    if (arr[i]>=1)
+          return i
+return -1
+
+Given an array A of n positive numbers.
+ The task is to find the first Equilibium Point in the array. 
+Equilibrium Point in an array is a position such that the 
+sum of elements before it is equal to the sum of elements after it.
+def equilibriumPoint(self,A, N):
+        # Your code here
+        totalsum=sum(A)
+        leftsum=0
+        for i, num in enumerate(A):
+            totalsum -= N
+            if (leftsum==totalsum):
+                return i
+            leftsum += N
+        return -1
+
+
+Given an array arr[] of n integers. Check whether it contains a triplet that sums up to zero. 
+def findTriplets(self, arr, n):
+        #code here
+        found = False
+        arr.sort()
+        for i in range(0,n-1):
+            l=i+1
+            r=n-1
+            x=arr[i]
+            while(l<r):
+                if (x+arr[l]+arr[r]==0):
+                    l += 1
+                    r -= 1
+                    found =True
+                    return 1
+                elif(x+arr[l]+arr[r]<0):
+                    l += 1
+                else:
+                    r -= 1
+            if (found==False):
+                return 0
+
+
+Given an array A of positive integers. Your task is to find the leaders in the array.
+ An element of array is leader if it is greater than or equal to all the elements to its right side.
+ The rightmost element is always a leader. 
+def leaders(self, arr, size):
+        #Code here
+        
+        num=arr[size-1]
+        print (num)
+        for i in range(size-2, -1, -1):
+            if num < arr[i]:
+                print (arr[i])
+                num=arr[i]
+
+
+def binarysearch(self, arr, n, k):
+		# code here
+		start=0
+		end= n-1
+		while start <= end:
+		    mid=(start+end)//2
+		    if arr[mid]==k:
+		        return mid
+		    elif arr[mid] < k:
+		        start = mid+1
+		    else:
+		        end=mid-1
+		return end+1
+
+def binarysearch(arr, n , l , r, k):
+		# code here
+		if r >= 1:
+		    mid= l+ (r-1)//2
+		    if arr[mid]==k:
+		        return mid
+		    elif arr[mid]>k:
+		        return binarysearch(arr,n,l,mid-1,k)
+		    else:
+		        return binarysearch(arr,n,mid+1,r,k)
+		else:
+		    return -1
+
+
+
+def leaders(self, A, N):
+        #Code here
+        n=[]
+        inv=A[::-1]
+        start=0
+        for i in inv:
+            if i>= start:
+                start=i
+                n.append(i)
+        return (n[::-1])
+
+
+#sum of two numbers without using  arithmetic operator
+def sum(a,b):
+    #code here
+    while b!=0:
+        carry= a & b
+        a=a^b
+        b=carry<<1
+    return a
+
+--------------------list----------------
+swap first and last elemnet
+list=[1,2,3,4,5,6,7]
+def swapele(list):
+    n=len(list)
+    temp=list[0]
+    list[0]=list[n-1]
+    list[n-1]=temp
+    return list
+print(swapele(list))
+   
+
+def swapele(list, pos1, pos2):                 
+    list[pos1],list[pos2]=list[pos2],list[pos1]
+    return list
+list=[1,2,3,4,5,6]
+pos1=2
+pos2=4
+print(swapele(list , pos1, pos2))                          
+
+
+reverse list
+a=[1,9,65,45,34]
+i=0
+j=len(a)-1
+while i<j:
+    t=a[i]
+    a[i]=a[j]
+    a[j]=t
+    i=i+1
+    j=j-1
+for i in range(len(a)):
+    print(a[i])
+
+
+#sum of element in list
+list=[1,2,3,4,5]
+def sum(n):
+    sum=0
+    for i in n:
+        sum += i
+    return sum
+print(sum(list))
+
+#mul of element in list
+list=[1,2,3,4,5]
+def mul(n):
+    mul=1
+    for i in n:
+        mul *= i
+    return mul
+print(mul(list))
+
+
+smallest no in list
+list=[1,2,3,4,5]
+print(min(list))
+
+largest
+list=[1,2,3,4,5]
+print(max(list))
+
+
+list=[34,81,46,97,2,43]
+list.sort()
+print("Largest number in list: ",list[-1])
+print("Second largest number in list: ", list[-2])
+
+
+#python program to find n largest elements in the list
+
+def nmaxelements(list,n):
+    final_list=[]
+    for i in range (0,n):
+        max=0
+        for j in range (len(list)):
+            if list[j]>max:
+                max=list[j]
+        list.remove(max);
+        final_list.append(max)
+    print(final_list)
+list=[3,4,2,5,21,45,61,23]
+n=2
+nmaxelements(list,n)
+
+
+even 
+list=[12,3,4,5,673,4,3,1,2,34]
+for n in list:
+    if n%2==0:
+        print(n, end=" ")
+
+
+odd
+list=[1,2,3,4,5,67,81,8]
+for i in list:
+    if i%2!=0:
+        print(i, end=" ")
+
+
+positive number
+list=[1,2,-3,4,-5,67,-81,8]
+for i in list:
+    if i>0:
+        print(i)
+
+
+negative number
+list=[1,2,-3,4,-5,67,-81,8]
+for i in list:
+    if i<0:
+        print(i)
+
+
+remove multiple value form list
+list=[1,2,-3,4,-5,67,-81,8]
+for i in list:
+    if i<0:
+        list.remove(i)
+        print(list)
+
+
+#cloning or copying a list
+list1=[1,2,3,4,5,67,81,8]
+def cloning(list1):
+    list_copy=list1[:]
+    return list_copy
+list2=cloning(list1)
+print("original list", list1)
+print("cloned list", list2)
+
+
+#print only duplicated values
+def repeat(x):
+    size=len(x)
+    repeated=[]
+    for i in range(size):
+        k=i+1
+        for j in range(k,size):
+            if x[i]==x[j] and x[i] not in repeated:
+                repeated.append(x[i])
+    return repeated
+
+list=[1,2,34,2,2,3,4]
+print(repeat(list))
+
+
+#cumulative sum of list
+list=[1,2,32,40,65]
+new_list=[]
+sum=0
+for i in range(0,len(list)):
+    sum += list[i]
+    new_list.append(sum)
+print(new_list)
+o/p:[1, 3, 35, 75, 140]
+
+
+#divide list in small chunks
+mylist=["jiya", "shaikh","helo", "baby","darl"]
+def divideinchunk(l ,n):
+    for i in range(0,len(l),n):
+        yield l[i:i+n]
+n=2
+x=list(divideinchunk(mylist,n))
+print(x)
+
+
+
+def sort_list(list1,list2):
+    zipped_pair= zip(list2,list1)
+    z= [x for _, x in sorted(zipped_pair)]
+    return z
+x=[1,2,3,52,4,8,6,5]
+y=["a","b","g","s","j"]
+print(sort_list(x,y))
+
+------------------matrices--------------
+adding two matrices
+x=[[1,2,3],
+   [3,2,7],
+   [7,5,4]]
+y=[[7,5,9],
+   [8,6,2],
+   [4,2,6]]
+result=[[0,0,0],
+        [0,0,0],
+        [0,0,0]]
+for i in range(len(x)):
+    for j in range(len(x[0])):
+        result[i][j]=x[i][j]+y[i][j]
+for r in result:
+    print(r)
+
+
+x=[[1,2,3],
+   [4,3,2],
+   [6,7,6]]
+y=[[3,2,4],
+   [5,5,3],
+   [9,8,7]]
+z=[[0,0,0],
+   [0,0,0],
+   [0,0,0]]
+for i in range(len(x)):
+    for j in range(len(y[0])):
+        for k in range(len(y)):
+            z[i][j] += x[i][k] * y[k][j]
+for r in z:
+    print(r)
+
+adding and substracting matrices
+x=[[1,2,3],
+   [4,5,6],
+   [5,6,7]]
+y=[[6,7,8],
+   [7,8,9],
+   [9,0,1]]
+z=[[0,0,0],
+   [0,0,0],
+   [0,0,0]]
+z1=[[0,0,0],
+   [0,0,0],
+   [0,0,0]]
+for i in range(len(x)):
+    for j in range(len(y[0])):
+        z[i][j]= x[i][j] +y[i][j]
+        z1[i][j] = x[i][j] - y[i][j]
+print(z)
+print(z1)
+
+
+#transpose matrix
+matrix=[[1,2,3],
+   [4,5,6],
+   [5,6,7]]
+for row in matrix:
+    print(row)
+print("\n")
+transpose_matrix = zip(*matrix)
+for row in transpose_matrix:
+    print(row)
+
+
+n=4
+print("The dimension: "+ str(n))
+temp = itertools.count(1)
+res = [[next(temp )for i in range(n)]for i  in range(n) for i in range(n)]
+print("the created matrix of n*n :" + str(res))
+
+
+----------------------string programs-----------------------
+
+string is palindrome or not-------ex malayalam , radar 
+def ispalindrome(str):
+    for i in range (0,int(len(str)/2)):      #run loop from 0 to len/2
+        if str[i] != str[(len(str)-i)-1]:   # first half not equal to second half from last then
+            return False
+        return True
+s="malayalam"
+ans=ispalindrome(s)
+if (ans):
+    print("yes")
+else:
+    print("no")
+
+
+def reversestring(str):
+    index=len(str)
+    rstr=""
+    while index>0:
+        rstr += str[index-1]
+        index=index-1
+    return rstr
+print(reversestring("jiya shaikh hello"))
+
+
+def reverse_sentence(sentence):
+           #first split string into words
+    words=sentence.split(' ')
+            #reverse split string in list and join using space
+    rev_sentence= ' '.join(reversed(words))
+             #retruns joined string
+    return rev_sentence
+if __name__ == "__main__":
+    input= 'jiya shaikh shakur'
+    print(reverse_sentence(input))
+
+
+remove ith element
+str= 'jiyashaikhshakur'
+print("The original string is", str)
+new_str=str.replace('r','')
+print("after removing r from string", new_str)
+                                   #we can replace it with space or null value and also with some random values
+new_str1=str.replace('a','i')
+print("after replacing a with i from string", new_str1)
+
+
+check if string1 ppresent in string or not
+def check(string, string1):
+    if (string.find(string1) == -1):
+        print("NO")
+    else:
+        print("YES")
+string="jiya shaikh"
+string1=" shaikh"
+check(string, string1)
+
+
+frequency of words in string
+
+string='hello world , this is jiya shaikh'
+print("the original string is "+ str(string))
+res={key: string.count(key) for key in string.split()}
+print("the words frequency: ", str(res))
+o/p:
+the original string is hello world , this is jiya shaikh
+the words frequency:  {'hello': 1, 'world': 1, ',': 1, 'this': 1, 'is': 2, 'jiya': 1, 'shaikh': 1}
+
+convert snake case into pascal case
+import string
+stri="hello_hello_wolrd_this_is_jiya"
+print("the original string: "+stri)
+res= string.capwords(stri.replace("_"," ")).replace(" "," ")
+print("the string after changing case: "+ str(res))
+
+
+length of string in 4 ways
+string="jiya"
+print(len(string))
+
+def findlen(string):
+    counter=0
+    for i in string:
+        counter +=1
+    return counter
+string="jiya"
+print(findlen(string))
+
+def findlen(string):
+    counter=0
+    while string[counter:]:
+        counter +=1
+    return counter
+string="jiya"
+print(findlen(string))
+
+def findlen(string):
+    if not string:
+        return 0
+    else:
+        some_random_str='py'
+        return ((some_random_str).join(string)).count(some_random_str)+1
+string="jiya"
+print(findlen(string))
+
+s="i am jiya shakur shaikh"
+def EvenWords(s):
+    s = s.split(' ')
+    for word in s:
+        if len(word)%2==0:
+            print(word)
+print(EvenWords(s))
+
+
+
+def check(string):
+    string = string.lower()
+    vowels = set("aeiou")
+    s= set({})
+    for char in string:
+        if char in vowels:
+            s.add(char)
+        else:
+            pass
+    if len(s)==len(vowels):
+        print("Accepted")
+    else:
+        print("Not Accepted")
+if __name__ == "__main__":
+    string="aie"
+    check(string)
+
+
+def count(str1 , str2):
+    set_string1= set(str1)
+    set_string2 = set(str2)
+    matched_characters = set_string1 & set_string2
+    print("No. of matching characters: "+ str(len(matched_characters)))
+if __name__ == "__main__":
+    str1 ='aabbcdhrjfbjma'
+    str2= 'bb276t4rfbndjda'
+    count(str1 , str2)
+
+
+#set has no duplicate values
+from collections import OrderedDict
+def removeDupWithoutOrder(str):
+    return " ".join(set(str))
+def removeDupWithOrders(str):
+    return " ".join(OrderedDict.fromkeys(str))
+if __name__=="__main__":
+    str="jiyashaikhshakur"
+    print("without Order =",removeDupWithoutOrder(str))
+    print("with orders =", removeDupWithOrders(str))
+
+
+#least frequent charcter in string
+test_str="jiyashakurshaikh"
+print("The original string is : "+ test_str)
+all_freq={}
+for i in test_str:
+    if i in all_freq:
+        all_freq[i]+=1
+    else:
+        all_freq[i] =1
+res = min(all_freq , key= all_freq.get)
+print("The minimum of all characters is :"+str(res))
+
+
+
+Problem Statement
+You have x no. of 5 rupee coins and y no. of 1 rupee coins. You want to purchase an item for amount z.
+ The shopkeeper wants you to provide exact change. You want to pay using minimum number of coins. How many 5 rupee coins and 1 rupee coins will you use? If exact change is not possible then display -1.
+def make_amount(rupees_to_make,no_of_five,no_of_one):
+    five_needed=0
+    one_needed=0
+
+    total= no_of_five*5 +no_of_one
+  
+    if (total >=rupees_to_make):
+        five_needed=rupees_to_make//5
+        one_needed= rupees_to_make%5
+        if(five_needed<=no_of_five and one_needed<=no_of_one):
+            print =("No. of Five needed :", five_needed)
+            print=("No. of One needed  :", one_needed)
+        elif(five_needed>no_of_five and one_needed<no_of_one):
+            one_needed= rupees_to_make-no_of_five*5
+            five_needed=no_of_five
+            print=("No. of Five needed :", five_needed)
+            print=("No. of One needed  :", one_needed)
+        elif(no_of_five>=five_needed and no_of_one<one_needed):
+            print(-1)
+    else:
+        print(-1)
+
+
+#Provide different values for rupees_to_make,no_of_five,no_of_one and test your program
+make_amount(28,8,5)
+
+
+#more frequent charcter
+test_str="shdggggggavhkgJ"
+all_freq={}
+for i in test_str:
+    if i in all_freq:
+        all_freq[i]+=1
+    else:
+        all_freq[i]=1
+res=max(all_freq , key =all_freq.get)
+print("The max frequent character is" +str(res))
+
+
+import re
+def run(string):
+    regex= re.compile('[!@#$%^&*()_+}{:?><~;=/.,]')
+    if (regex.search(string)==None):
+        print("String is accepted")
+    else:
+        print("not acccepted")
+if __name__=="__main__":
+    string="jiya ssjdhs"
+    run(string)
+
+
+#J pattern in star
+for row in range(7):
+    for col in range(5):
+        if col==2 or (row == 0 and col != 2) or (row == 6 and col < 2):
+            print("*", end="")
+        else:
+            print(end=" ")
+    print()
+
+
+ for row in range(6):
+    for col in range(6):
+        if ((col==0 or col==4) and row !=0) or ((row==0 or row==3) and (col>0 and col<4)):
+            print("*", end="")
+        else:
+            print(end=" ")
+    print()
+o/p:
+ ***  
+*       * 
+*       * 
+***** 
+*       * 
+*       * 
+
+
+a=int(input("Enter frist no:-"))
+b=int(input("enter second no:-"))
+print("ENter 1 for addition")
+print("ENter 2 for subtraction")
+print("ENter 3 for multipliaction")
+print("ENter 4 for division")
+c=int(input("Enter your choice:-"))
+
+if c==1:
+    print("Addition is", a+b)
+elif c==2:
+    print("subtraction is", a-b)
+elif c==3:
+    print("multipliaction is", a*b)
+elif c==4:
+    print("division is", a/b)
+
+
+
+#generating random string until a given string is generated
+import string
+import random
+import time
+possible_char  = string.ascii_lowercase + string.ascii_uppercase +string.digits +',.?! ;:'
+t ="test"
+attemptthis=''.join(random.choice(possible_char) for i in range(len(t)))
+attemptnext =''
+done= False
+iteration =0
+while done==False:
+    print(attemptthis)
+    attemptnext =''
+    done = True
+    for i in range(len(t)):
+        if attemptthis[i] !=t[i]:
+            done = False
+            attemptnext += random.choice(possible_char)
+        else:
+            attemptnext += t[i]
+    iteration = iteration+1
+    attemptthis = attemptnext
+    time.sleep(0.1)
+print("Target matched after ", iteration,"iteration")
+
+
+
+for row in range(7):
+    for col in range(5):
+        if col==2 or ((row==0 or row==6) and col!=2):
+            print('*' ,end='')
+        else:
+            print(end=" ")
+    print()
+# *****
+#   *
+#   *
+# *****
+
+
+#parenthesis check (string)
+ for i in x:
+           if i in ["(", "{", "["]:
+               stack.append(i)
+           else:
+               if not stack:
+                   return False
+               curr_char = stack.pop()
+               
+               if curr_char == "(":
+                   if i != ")":
+                       return False
+               if curr_char == "{":
+                   if i != "}":
+                       return False
+               if curr_char == "[":
+                   if i != "]":
+                       return False
+       
+       if stack:
+           return False
+       return True
+
+
+
+#reversestring
+def reversewords(s):
+    if len(S)==0:
+          return ""
+    return ".".join(S.split(".")[::-1])
+
+
+
+#Your task is to implement the function strstr. T
+#he function takes two strings as arguments (s,x) and  
+#locates the occurrence of the string x in the string s. 
+#The function returns and integer denoting the first occurrence of the string x in s (0 based indexing).
+
+def strstr(s,x):
+    #code here
+    for i in s:
+        if x in s:
+            return s.index(x)
+        return -1
+
+#Function is to check whether two strings are anagram of each other or not.
+    def isAnagram(self,a,b):
+        #code here
+        new=[]
+        old=[]
+        for i in a:
+            new.append(i)
+        for i in b:
+            old.append(i)
+        new.sort()
+        old.sort()
+        if old==new:
+            return True
+        return False
+or
+return True if sorted(a) == sorted(b) else False
+Note: You are not allowed to use inbuilt function.
+
+
+
+#Function to check if a string can be obtained by rotating
+    #another string by exactly 2 places.
+    def isRotated(self,str1,str2):
+        strout1 = str1[2:]+str1[0:2]
+        strout2 = str1[len(s)-2:]+str1[0:-2]
+        return 1 if strout1 == str2 or strout2 == str2 else 0
+
+
+#Non Repeating Character 
+#Given a string S consisting of lowercase Latin Letters. 
+#Return the first non-repeating character in S. 
+#If there is no non-repeating character, return '$'.
+       Hash={}
+       for i in range(len(s)):
+           if s[i] not in Hash:
+               Hash[s[i]]=1
+           else:
+               Hash[s[i]]+=1
+       for i in range(len(s)):
+           if Hash[s[i]]==1:
+               return s[i]
+       return "$"
+
+
+
+#isomorphic string
+#Given two strings 'str1' and 'str2', check if these two strings are isomorphic to each other.
+#Two strings str1 and str2 are called isomorphic if there is a one to one mapping possible 
+#for every character of str1 to every character of str2 while preserving the order.
+#Note: All occurrences of every character in str1 should map to the same character in str2
+
+def areIsomorphic(self,str1,str2):
+        dict_str1={}
+        dict_str2={}
+        for i,value in enumerate(str1):
+            dict_str1[value]=dict_str1.get(value,[])+[i]
+        for j,value in enumerate(str2):
+            dict_str2[value]=dict_str2.get(value,[])+[j]
+            
+        if sorted(dict_str1.values())==sorted(dict_str2.values()):
+            return 1
+        return 0
+
+#You are given a string S, the task is to reverse the string using stack.
+stack=[]
+    for i in S:
+        stack.append(i)
+    S=""
+    for i in range(len(stack)):
+        S+=stack.pop()
+    return S
+        
+
+Given a string in roman no format (s)  your task is to convert it to an integer . Various symbols and their values are given below.
+I 1
+V 5
+X 10
+L 50
+C 100
+D 500
+M 1000
+
+def romanToDecimal(self, S): 
+        # code here
+        dic = {'M': 1000, 'D': 500, 'C':100, 'L':50,
+               'X':10, 'V':5, 'I':1}
+        
+        output = 0
+        num  = []
+        for i in S:
+            num.append(dic[i])
+        
+        if len(num) == 1:
+            return num[0]
+        else:
+            for i in range(len(num)-1):
+                if num[i] < num[i+1]:
+                    output -= num[i]
+                else:
+                    output += num[i]
+            
+            output += num
+
+
+#Given a Integer array A[] of n elements. Your task is to complete the function PalinArray.
+ Which will return 1 if all the elements of the Array are palindrome otherwise it will return 0.
+def PalinArray(arr ,n):
+    # Code here
+    count=0
+    for i in range(0,n):
+        a=str(arr[i])
+        if(str(arr[i])==a[::-1]):
+            count +=1
+    if (count==n):
+        return 1
+    else:
+        return 0
+or 
+ a[:]=b[-1::-1]
+if (a==b):
+    print("palindrome")
+print("not palindrome")
+
+
+
+Detect Loop in linked list
+Given a linked list of N nodes. The task is to check if the linked list has a loop. Linked list can contain self loop.
+def detectloop(head):
+    slow=fast=head
+    if not head:
+          return None
+    while fast and fast.next:
+         slow=slow.next
+         fast=fast.next.next
+         if slow==fast:
+               return True
+    return False
+
+
+
+Remove the loop in linked list
+def removeloop(head)"
+     curr= head
+     count=1
+     while (curr and curr.next):
+          if count=n:
+              curr.next=None
+          curr=curr.next
+          count +=1
+              return curr
+
+
+Nth node from end in linked list
+def getNthnode(head):
+     temp=head
+     total=0
+     while temp:
+          total +=1
+          temp=temp.next
+    if n>total:
+          return -1
+    k=total-n
+    temp=head
+    while k>=1:
+         temp=temp.next
+         k-=1
+    return temp.data
+
+
+linkedlist insertion
+def insertAtBeginning(head,x):
+      new=head(x)
+      if head:
+          new.next=head
+     head=new
+     return head
+
+or
+
+if head !=None:
+        node.next=head
+    return node
+
+
+def insertatend(head):
+    new=Node(x)
+    if head==None:
+           head=new
+    else:
+          ln=head
+          while ln.next:
+                  ln.ln.next
+          ln.next=new
+    return head
+
+
+or      
+    if head is None:
+        return SinglyLinkedListNode(data)
+    temp = head
+    while temp.next is not None:
+        temp = temp.next
+    temp.next = SinglyLinkedListNode(data)
+    return head
+
+
+count node in linked list+
+def getcount(head_node):
+     temp=head_count
+     count=0
+     while temp:
+           count +=1
+            temp=temp.next
+     return count
+
+
+check if circular linked or not
+def iscircular(head):
+     temp=head
+     while temp:
+            temp=temp.next
+            if temp==head:
+                  return 1
+
+
+Finding middle element in a linked list
+def findmin(self,head):
+	if not head:
+		return -1
+	count =0
+	temp =head
+	while temp:
+		count +=1
+		temp=temp.next
+	mid= int(count/2)+1
+	for i in range(1,mid):
+		head=head.next
+	return head.data
+
+
+Reverse a linked list
+def reverseList(self, head):
+        # Code here
+        rev=head
+        low=None
+        high=None
+        while rev!=None:
+            high=rev.next
+            rev.next=low
+            low=rev
+            rev=high
+        return low
+
+
+check if linked list is palindrome or not
+def ispalindrome(head):
+	temp = head
+	s=""
+	while(temp!=None):
+		s += str(temp.data)
+		temp=temp.next
+	if(s==s[::-1]):
+		return True
+	return False
+
+
+
+remove duplicates'
+def removeduplicates(head):
+	curr=head
+	while(curr):
+		temp=curr
+		while(temp!=None and temp.data==curr.data):
+			temp=temp.next
+		curr.next=temp
+		curr=curr.next
+	return head
+		
+
+Rotate linked list
+def rotate(head,k):
+	temp=head
+	while(temp.next!=None):
+		temp=temp.next
+	temp.next=head
+	count=0
+	while(count<k):
+		temp=temp.next
+		count+=1
+	head=temp.next
+	temp.next=None
+	return head
+		
+
+minimum number of operations
+def minOperation(n):
+	opr=0
+	while n>0:
+		if n%2==0:
+			n=int(n/2)
+		else:
+			n -=1
+		opr +=1
+	return opr
+
+
+check whether the sum of the ith row is equal to the sum of the ith column
+def checcksum(N,M,A):
+	sum1=0
+	sum2=0
+	for i in range(0,N):
+		sum1=0
+		sum2=0
+		for j in range(0,M):
+			sum1  +=A[i][j]
+			sum2 +=A[j][i]
+		if (sum1==sum2):
+			return 1
+	return 0
+
+
+
+Complete the function hourglassSum in the editor below.
+hourglassSum has the following parameter(s):
+int arr[6][6]: an array of integers
+
+
+def hourglass(arr):
+	m=6
+	n=6
+	max_sum=-50000
+	for i in range(0,n-2):
+		for j in rane(0,j-2):
+			#top sum
+			top=sum(arr[i][j:j+3])
+			mid=sum (arr[i][j+1])
+			bottom -sum(arr[i+2][j:j+3])
+			hourglass=mid+top+bottom
+			if (hourglass>max_sum):
+				max_sum=hourglass
+			else:
+				continue
+	return max_sum
+
+
+
+
+
+
+Print the Elements of a Linked List
+Complete the printLinkedList function in the editor below.
+printLinkedList has the following parameter(s):
+
+SinglyLinkedListNode head: a reference to the head of the list
+class SinglyLinkedListNode:
+    def __init__(self, node_data):
+        self.data = node_data
+        self.next = None
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def insert_node(self, node_data):
+        node = SinglyLinkedListNode(node_data)
+        if not self.head:
+            self.head = node
+        else:
+            self.tail.next = node
+        self.tail = node
+
+def printLinkedList(head):
+    curr = head
+    while curr:
+        print(curr.data)
+        curr = curr.next
+
+  
+
+display the linked list
+ def dispaly(node):
+	node=node.next
+	print(node.data,end="")
+
+
+
+
+#using pop and push 
+class Node:    
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+        
+class MyStack:
+    def __init__(self):
+        self.top = None
+    #Function to push an integer into the stack.
+    def push(self, data):
+        temp = Node(data)
+        temp.next = self.top
+        self.top = temp
+
+    
+    #Function to remove an item from top of the stack.
+    def pop(self):
+
+        # Add code here
+        if self.top == None:
+            return -1
+        ans = self.top.data
+        self.top = self.top.next
+        return ans
+
+
+
+#Problem Statement
+
+Gary is an avid hiker. He tracks his hikes meticulously, paying close attention to small details like topography.
+During his last hike, he took exactly n steps. For every step he took, he noted if it was an uphill or a downhill step. Gary’s hikes start and end at sea level. We define the following terms:
+
+A mountain is a non-empty sequence of consecutive steps above sea level, starting with a step up from sea level and ending with a step down to sea level.
+A valley is a non-empty sequence of consecutive steps below sea level, starting with a step down from sea level and ending with a step up to sea level.
+Given Gary’s sequence of up and down steps during his last hike, find and print the number of valleys he walked through.
+O/P:
+def countingvalley(steps, path):
+	level= valley= 0
+	for i in path:
+		if i=='U':
+			level +=1
+		elif i =='D':
+			if level == 1:
+				valley +=1
+			level -=1
+	return valley
+
+steps= int(input())
+path=input()
+print(countingvalley(steps, path))
+
+
+
+
+Given an array arr[] of positive integers of size N. 
+Reverse every sub-array group of size K.
+Note: If at any instance, there are no more subarrays of size greater than or equal to K, 
+then reverse the last subarray (irrespective of its size).
+solution:
+def reverseInGroups(N,K,arr):
+	i=0
+	j=len(arr)-1
+	while(i<N):
+		left=i
+		right=min(I+K-1,N-1)
+		while(left<right):
+			t=arr[left]
+			arr[left]=arr[right]
+			arr[right]=t
+			arr[left]-=1
+			arr[right]+=1
+		i +=K
+	return arr
+	
+
+
+
+Equilibrium point:
+Given an array A of n positive numbers. The task is to find 
+the first Equilibium Point in the array. 
+Equilibrium Point in an array is a position such that the sum of elements before
+ it is equal to the sum of elements after it.
+code:
+    def equilibriumPoint(self,A, N):
+        # Your code here
+        total_sum=sum(A)
+        left_sum=0
+        for i in range(N):
+            z= total_sum-left_sum
+            left_sum+=A[i]
+            # print(left_sum)
+            if z == left_sum:
+                return i+1 
+        return -1
+
+
+
+Largest subarray with 0 sum
+#Given an array having both positive and negative integers. The
+ task is to compute the length of the largest subarray with sum 0.
+code:
+    def maxLen(self, n, arr):
+        #Code here
+        dict1={}
+        max_len=0
+        curr_sum=0
+        for i in range(len(arr)):
+            curr_sum +=arr[i]
+            if arr[i]==0 and max_len==0:
+                max_len=1
+            if curr_sum==0:
+                max_len=i+1
+
+            if curr_sum in dict1:
+                max_len = max(max_len, i - dict1[curr_sum])
+            else:
+ 
+            # else put this sum in dictionary
+                dict1[curr_sum] = i
+        return max_len
+
