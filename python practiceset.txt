@@ -1,6 +1,7 @@
 import random
 import string
 import os
+
 print("Generate random color hex:")
 print("#{:06x}".format(random.randint(0,0xFFFFFF)))
 
